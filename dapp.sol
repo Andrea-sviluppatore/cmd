@@ -18,8 +18,18 @@ contract contratto{
 
     }
 
+    function prelevare() public {
+        mappature[msg.sender].pop(strutture("bnb", msg.value, address(0)));
+    }
+
+    string owner ="deployer";
+
+   constructor(owner _deployer) public {
+      owner = _deployer;
+   }
+
 
 }
 
 //funczione per prelevare cio che ho depositato(attento alla sicurezza)
-//constructor e metodo che rende owner il deplyer(modifier)
+//constructor e metodo che rende owner il deployer(modifier)
