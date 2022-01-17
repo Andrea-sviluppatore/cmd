@@ -13,12 +13,16 @@ contract dappStaking{
 
     address[] internal stackHolders;
 
+    //per verifica l'indirizzo di uno stakeHolder
+
     function isStakeHolders(address _address) public view returns(bool, uint256){
        for (uint256 s = 0; s < stakeholders.length; s += 1){
           if (_address == stakeholders[s]) return (true, s);
        }
        return (false = 0);
     }
+
+    // per aggiungere e rimuovere deli stakeHolder
 
     function addStakeHolder(address _stackeHolder) public {
        (bool _isStakeholder, ) = isStakeholder(_stakeholder);
@@ -32,9 +36,13 @@ contract dappStaking{
            stakeholders.pop();
    }
 
+   //Un metodo per recuperare la posta in gioco per uno stakeholder.
+
    function stakeOf(address _stakeHolder) public view returns(uint256){
      return stake[_stakeHolder];
    }
+
+   //metodo per le puntate aggregate messe tutte insieme
 
    function totalsStake() public view returns(uint256){
       uint256 _totlasStake = 0;
@@ -43,6 +51,8 @@ contract dappStaking{
        }
        return _totalStakes;
    }
+
+   //crea e toglie lo stake
 
    function createStake(uint256, _stake) public {
        _burn(msg.sender, _stake);
